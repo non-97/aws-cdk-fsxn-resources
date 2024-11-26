@@ -82,6 +82,9 @@ export interface TagProperty {
   value: string;
 }
 
+// 全リソース共通に設定したいRemovalPolicy
+export type RemovalPolicyProperty = cdk.RemovalPolicy;
+
 // システム情報
 export interface SystemProperty {
   systemName: string; // システム名
@@ -90,14 +93,14 @@ export interface SystemProperty {
 
 export interface FsxnResourcesProperty {
   systemProperty?: SystemProperty;
-  tagsProperty?: TagProperty[];
-  fsxnFileSystemProperty?: FsxnFileSystemProperty;
+  kmsKeyProperty?: KmsKeyProperty;
   prefixListsProperty?: PrefixListsProperty;
   securityGroupProperty?: SecurityGroupProperty;
-  kmsKeyProperty?: KmsKeyProperty;
-  fsxnVolumesProperty?: FsxnVolumesProperty;
+  fsxnFileSystemProperty?: FsxnFileSystemProperty;
   backupProperty?: BackupProperty;
+  fsxnVolumesProperty?: FsxnVolumesProperty;
   monitoringProperty?: MonitoringProperty;
+  removalPolicyProperty?: RemovalPolicyProperty;
 }
 
 // CFn Stackのプロパティを表すInterface

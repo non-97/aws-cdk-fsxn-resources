@@ -1,3 +1,5 @@
+import * as cdk from "aws-cdk-lib";
+
 import { FsxnResourcesStackProperty } from "../types";
 import { systemConfig } from "./system-config";
 import { kmsKeyConfig } from "./kms-config";
@@ -23,6 +25,7 @@ export const fsxnResourcesStackProperty: FsxnResourcesStackProperty = {
     backupProperty: backupConfig,
     fsxnVolumesProperty: fsxnVolumesConfig,
     monitoringProperty: monitoringConfig,
+    removalPolicyProperty: cdk.RemovalPolicy.RETAIN_ON_UPDATE_OR_DELETE,
   },
   tags: tagsConfig,
 };

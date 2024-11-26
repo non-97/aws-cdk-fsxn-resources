@@ -68,5 +68,24 @@ export class FsxnResourcesStack extends cdk.Stack {
           backupVault: backupConstruct?.backupVault,
         })
       : undefined;
+
+    // Set Removal Policy
+    if (!props.removalPolicyProperty) {
+      return;
+    }
+    this.applyRemovalPolicyToAll(this, props.removalPolicyProperty);
+  }
+
+  private applyRemovalPolicyToAll(
+    construct: IConstruct,
+    removalPolicy: cdk.RemovalPolicy
+  ): void {
+    if (construct instanceof cdk.CfnResource) {
+      construct.applyRemovalPolicy(removalPolicy);
+    }
+
+    construct.node.children.forEach((child) => {
+      this.applyRemovalPolicyToAll(child, removalPolicy);
+    });
   }
 }

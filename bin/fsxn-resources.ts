@@ -13,6 +13,7 @@ const stackName = fsxnResourcesStackProperty.props.systemProperty
 const stack = new FsxnResourcesStack(app, stackName, {
   env: fsxnResourcesStackProperty.env,
   ...fsxnResourcesStackProperty.props,
+  terminationProtection: true,
 });
 
 fsxnResourcesStackProperty.tags?.forEach((tag) => {
