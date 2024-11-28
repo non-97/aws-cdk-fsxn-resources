@@ -69,6 +69,10 @@ export interface BackupProperty {
 // 監視に関連する情報
 export interface MonitoringProperty {
   rootVolumeId?: string; // SVMのルートボリュームのID
+  addFsvolIdNames?: {
+    id: string;
+    name: string;
+  }[];
   enableInodeUsageMonitoring: boolean; // inode監視を行うか否か
   enableOkAction?: boolean; // OK 状態になったタイミングで通知を行うか否か
   topicName?: string; // SNS Topicの名前

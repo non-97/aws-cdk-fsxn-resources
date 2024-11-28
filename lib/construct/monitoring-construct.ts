@@ -53,6 +53,12 @@ export class MonitoringConstruct extends BaseConstruct {
       return { id: fsvol.attrVolumeId, name };
     });
 
+    // AWS CDK管理外のボリュームを監視対象とする場合
+    if (props.monitoringProperty.addFsvolIdNames) {
+      fsvolIdNames?.push(...props.monitoringProperty.addFsvolIdNames);
+    }
+
+    // ルートボリュームを監視対象とする場合
     if (props.monitoringProperty.rootVolumeId) {
       fsvolIdNames?.push({
         id: props.monitoringProperty.rootVolumeId,
